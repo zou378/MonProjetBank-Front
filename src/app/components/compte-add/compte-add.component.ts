@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Compte } from '../../domain/compte';
+import { ComptesService } from '../../services/comptes.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-compte-add',
@@ -7,7 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompteAddComponent implements OnInit {
 
-  constructor() { }
+  c_cpt: Compte = {
+        numero: '',
+      proprietaire: '',
+      solde: 0,
+      operations: []
+      };
+  constructor( private _service: ComptesService, private _router: Router) { }
+
+  c_ouvrirCompte() {
+      this._service.addCompte(this.c_cpt).subscribe(
+        // Naviguer vers la vue list
+       resp => this._router.navigate(['list']),
+       error => console.log(`ATTENTION: Il ya eu l'erreur ${error} lors`)
+      );
+  }
 
   ngOnInit() {
   }

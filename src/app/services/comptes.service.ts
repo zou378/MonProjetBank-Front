@@ -18,4 +18,18 @@ export class ComptesService {
       tap(console.log)  // Afficher le json sur la console
     );
   }
+
+  addCompte(cpt: Compte): Observable<any> {
+    return this._http.post(this.url, cpt);
+  }
+
+  getCompteById(id: string): Observable<any> {
+    return this._http.get<Compte>(this.url + '/' + id);
+  }
+
+  deleteCompte(id: string): Observable<any> {
+    return this._http.delete(this.url + '/' + id);
+  }
+
 }
+
