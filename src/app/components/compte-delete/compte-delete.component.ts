@@ -10,7 +10,7 @@ import { ComptesService } from '../../services/comptes.service';
 })
 export class CompteDeleteComponent implements OnInit {
 
-  constructor(private  _router: ActivatedRoute, private _service: ComptesService,private  _routerNavig: Router) { }
+  constructor(private  _router: ActivatedRoute, private _service: ComptesService, private  _routerNavig: Router) { }
 
   numCompte: string;
   compte: Compte ;
@@ -51,10 +51,11 @@ export class CompteDeleteComponent implements OnInit {
       );
   }
 
+  // on aurait pu juste rajouter au tag : routerLink='/list'
   annulerDelete() {
     this._routerNavig.navigate(['/list']);
     console.log('annulé');
-
   }
+
 
 }
