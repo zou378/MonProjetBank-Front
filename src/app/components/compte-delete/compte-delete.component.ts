@@ -54,7 +54,7 @@ export class CompteDeleteComponent implements OnInit {
   // on aurait pu juste rajouter au tag : routerLink='/list'
   annulerDelete() {
     this._routerNavig.navigate(['/list']);
-    console.log('annulé');
+    console.log('delete annulé');
   }
 
 
