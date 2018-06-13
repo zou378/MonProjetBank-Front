@@ -15,12 +15,14 @@ import { CompteDeleteComponent } from './components/compte-delete/compte-delete.
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { LogoutResolver } from './resolvers/logout-resolver';
 
 
 const mesRoutes = [
   {path: 'list', component: ComptesListComponent, canActivate: [AuthGuard]},
   {path: 'add', component: CompteAddComponent},
   {path: 'welcome', component: WelcomeComponent},
+  {path: 'logout', component: WelcomeComponent, resolve: [LogoutResolver]},
   {path: 'login', component: LoginComponent},
   {path: 'delete/:id', component: CompteDeleteComponent},
   {path: '', redirectTo: '/welcome', pathMatch: 'full'},
@@ -46,6 +48,7 @@ const mesRoutes = [
     FormsModule
   ],
   providers: [
+    LogoutResolver,
     {
       provide: HTTP_INTERCEPTORS
       , useClass: JwtInterceptor
